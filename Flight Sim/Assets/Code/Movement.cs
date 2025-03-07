@@ -33,22 +33,14 @@ public class Movement : MonoBehaviour
             transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
 
         }
-        else if (((Input.GetKey(KeyCode.S)) && Input.GetKey(KeyCode.Alpha2)))
-        {
-            rotationSpeed = -MathF.Abs(rotationSpeed);
-            transform.Rotate(10 * rotationSpeed * Time.deltaTime, 0, 0);
-        }
+
         if (Input.GetKey(KeyCode.W)) 
         {
             rotationSpeed = +MathF.Abs(rotationSpeed);
             transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
 
         }
-        else if (((Input.GetKey(KeyCode.W)) && Input.GetKey(KeyCode.Alpha2)))
-        {
-            rotationSpeed = +MathF.Abs(rotationSpeed);
-            transform.Rotate(10* rotationSpeed * Time.deltaTime, 0, 0);
-        }
+
         if (Input.GetKey(KeyCode.A))
         {
             rotationSpeed = +MathF.Abs(rotationSpeed);
