@@ -17,25 +17,16 @@ public class Movement : MonoBehaviour
     public float acceleration = 1.0f;
     public float maxSpeed = 60.0f;
     public float minSpeed = 0.0f;
-    public Rigidbody rb;
+   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Gravity starts when under target speed
-        if (curSpeed <= 9f)
-        {
-            rb.AddForce(0, -1, 0, ForceMode.Force);
-        }
-        else if (curSpeed > 10f)
-        {
-            rb.AddForce(0, 1, 0, ForceMode.Force);
-        }
         //Code for rotating plane while holding down keys
         if (Input.GetKey(KeyCode.S))
         {
