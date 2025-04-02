@@ -13,15 +13,16 @@ public class Movement : MonoBehaviour
     public float rotationSpeed;
     [SerializeField]
     private float curSpeed = 10.0f;
-
+    [SerializeField]
+    private float health;
     public float acceleration = 1.0f;
     public float maxSpeed = 60.0f;
     public float minSpeed = 0.0f;
-   
+    Collider PlaneBody;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        PlaneBody = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -80,5 +81,11 @@ public class Movement : MonoBehaviour
 
             transform.Translate(Vector3.forward * curSpeed * Time.deltaTime);
         transform.position = transform.position + Camera.main.transform.forward * curSpeed * Time.deltaTime;
+
+        //Checker for om flyet rammer jorden,midste liv hvis det sker
+        if (PlaneBody)
+        {
+
+        }
     }
 }
