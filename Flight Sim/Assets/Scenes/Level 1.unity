@@ -440,7 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 100
   curSpeed: 10
-  health: 100
+  curHealth: 0
   acceleration: 3
   maxSpeed: 60
   minSpeed: 0
@@ -460,11 +460,11 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 9.196041, y: 2.8990479, z: 14.856724}
+  m_Center: {x: 0.40197945, y: 0.48535156, z: 0.007450342}
 --- !u!1 &1024685933
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +498,7 @@ TerrainCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
   m_TerrainData: {fileID: 15600000, guid: 8cadbf01afd9584409d791bf8e00a922, type: 2}
@@ -643,7 +643,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

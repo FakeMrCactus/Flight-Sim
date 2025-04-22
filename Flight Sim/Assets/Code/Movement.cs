@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
@@ -14,7 +16,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private float curSpeed = 10.0f;
     [SerializeField]
-    private float health;
+    private float curHealth;
     public float acceleration = 1.0f;
     public float maxSpeed = 60.0f;
     public float minSpeed = 0.0f;
@@ -23,6 +25,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         PlaneBody = GetComponent<BoxCollider>();
+        curHealth = 100f;
     }
 
     // Update is called once per frame
@@ -82,10 +85,20 @@ public class Movement : MonoBehaviour
             transform.Translate(Vector3.forward * curSpeed * Time.deltaTime);
         transform.position = transform.position + Camera.main.transform.forward * curSpeed * Time.deltaTime;
 
-        //Checker for om flyet rammer jorden,midste liv hvis det sker
-        if (PlaneBody)
+        if (curHealth <= 0)
         {
-
+            SceneManager.LoadScene("Game Over");
         }
+       
+    }
+    //Checker for om flyet rammer jorden,midste liv hvis det sker
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Ground")
+        {
+            Debug.Log("Collided with ground");
+            curHealth = curHealth - 100f;
+        }
+       
     }
 }
