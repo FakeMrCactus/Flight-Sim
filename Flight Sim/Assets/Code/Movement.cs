@@ -21,6 +21,10 @@ public class Movement : MonoBehaviour
     public float maxSpeed = 60.0f;
     public float minSpeed = 0.0f;
     Collider PlaneBody;
+    private bool gunFire = false;
+    public Rigidbody bullet;
+    public float bulletSpe = 19f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -82,11 +86,16 @@ public class Movement : MonoBehaviour
                 curSpeed = minSpeed;
         }
 
-            transform.Translate(Vector3.forward * curSpeed * Time.deltaTime);
-        transform.position = transform.position + Camera.main.transform.forward * curSpeed * Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gunFire = true;
+        }
+
+        transform.Translate(Vector3.forward * curSpeed * Time.deltaTime);
 
         if (curHealth <= 0)
         {
+            Destroy(PlaneBody);
             SceneManager.LoadScene("Game Over");
         }
        
@@ -96,9 +105,23 @@ public class Movement : MonoBehaviour
     {
         if (col.gameObject.tag == "Ground")
         {
-            Debug.Log("Collided with ground");
             curHealth = curHealth - 100f;
         }
-       
+
+        if (col.gameObject.tag == "Bullet")
+        {
+            curHealth = curHealth - 20f;
+        }
+
     }
+    
+    void GunsGunsGuns()
+    {
+        if(gunFire==true)
+        {
+            Rigidbody instantiatedProjectile = Instantiate(bullet, transform.position, transform.rotation) as Rigidbody;
+            instantiatedProjectile.linearVelocity = transform.TransformDirection(new Vector3(0, 0, bulletSpe));
+        }
+
+    } 
 }

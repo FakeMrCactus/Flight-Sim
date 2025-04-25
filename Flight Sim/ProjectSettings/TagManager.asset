@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Enemy
+  - Friend
+  - Bullet
   layers:
   - Default
   - TransparentFX
