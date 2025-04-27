@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -11,6 +12,9 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*if (Bullet = isActiveAndEnabled)
+        {
+
+        } */
     }
 }

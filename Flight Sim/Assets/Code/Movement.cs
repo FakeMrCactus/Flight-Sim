@@ -96,7 +96,8 @@ public class Movement : MonoBehaviour
         if (curHealth <= 0)
         {
             Destroy(PlaneBody);
-            SceneManager.LoadScene("Game Over");
+            curSpeed = 0;
+            StartCoroutine(Death());
         }
        
     }
@@ -124,4 +125,10 @@ public class Movement : MonoBehaviour
         }
 
     } 
+
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Game Over");
+    }
 }
