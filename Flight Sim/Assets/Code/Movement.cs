@@ -22,8 +22,6 @@ public class Movement : MonoBehaviour
     public float minSpeed = 0.0f;
     Collider PlaneBody;
     public GameObject bulletPrefab;
-    public float bulletSpe = 19f;
-    public float despawnTime =4f;
     public Transform bulletCreate;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -100,7 +98,10 @@ public class Movement : MonoBehaviour
             curSpeed = 0;
             StartCoroutine(Death());
         }
-       
+
+        
+
+
     }
     //Checker for om flyet rammer jorden,midste liv hvis det sker
     void OnCollisionEnter(Collision col)
@@ -110,17 +111,25 @@ public class Movement : MonoBehaviour
             curHealth = curHealth - 100f;
         }
 
-        if (col.gameObject.tag == "Bullet")
+        if (col.gameObject.tag == "ENYBullet")
         {
             curHealth = curHealth - 20f;
         }
 
+        if (col.gameObject.tag == "Bullet")
+        {
+            Physics.IgnoreCollision(PlaneBody,GetComponent<Collider>());
+        }
     }
-    
+
     void GunsGunsGuns()
     {
-        GameObject bullet = Instantiate(bulletPrefab);
-        Debug.Log();
+        for (var i  = 0; i < 10; i++)
+        {
+
+            GameObject bullet = Instantiate(bulletPrefab);
+            bullet.transform.position = bulletCreate.position;
+        }
 
     } 
 
@@ -129,4 +138,6 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("Game Over");
     }
+
+
 }

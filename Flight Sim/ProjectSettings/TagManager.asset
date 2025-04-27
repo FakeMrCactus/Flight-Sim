@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Friend
   - Bullet
+  - ENYBullet
   layers:
   - Default
   - TransparentFX
