@@ -21,9 +21,10 @@ public class Movement : MonoBehaviour
     public float maxSpeed = 60.0f;
     public float minSpeed = 0.0f;
     Collider PlaneBody;
-    private bool gunFire = false;
-    public Rigidbody bullet;
+    public GameObject bulletPrefab;
     public float bulletSpe = 19f;
+    public float despawnTime =4f;
+    public Transform bulletCreate;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -88,7 +89,7 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            gunFire = true;
+            GunsGunsGuns();
         }
 
         transform.Translate(Vector3.forward * curSpeed * Time.deltaTime);
@@ -118,11 +119,8 @@ public class Movement : MonoBehaviour
     
     void GunsGunsGuns()
     {
-        if(gunFire==true)
-        {
-            Rigidbody instantiatedProjectile = Instantiate(bullet, transform.position, transform.rotation) as Rigidbody;
-            instantiatedProjectile.linearVelocity = transform.TransformDirection(new Vector3(0, 0, bulletSpe));
-        }
+        GameObject bullet = Instantiate(bulletPrefab);
+        Debug.Log();
 
     } 
 
