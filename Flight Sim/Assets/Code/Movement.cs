@@ -24,6 +24,8 @@ public class Movement : MonoBehaviour
     Collider PlaneBody;
     public GameObject bulletPrefab;
     public Transform bulletCreate;
+    public GameObject missilesprefab;
+    public Transform missilesCreate;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -87,12 +89,15 @@ public class Movement : MonoBehaviour
             if (curSpeed < minSpeed)
                 curSpeed = minSpeed;
         }
-
+        //keys for de forskellige måde at angribe
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             GunsGunsGuns();
         }
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            MissileLauncher();
+        }
         transform.Translate(Vector3.forward * curSpeed * Time.deltaTime);
 
         if (curHealth <= 0)
@@ -143,6 +148,11 @@ public class Movement : MonoBehaviour
     void Shoot()
     {
         Instantiate(bulletPrefab, bulletCreate.transform.position, transform.rotation);
+    }
+
+    void MissileLauncher()
+    {
+        Instantiate(missilesprefab, missilesCreate.transform.position, transform.rotation);
     }
 
 }
