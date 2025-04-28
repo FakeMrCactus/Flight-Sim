@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        bulletRigidbody.linearVelocity = (Vector3.forward * bulletSpe);
+        bulletRigidbody.linearVelocity = (transform.forward * bulletSpe);
         Destroy(gameObject, 4f);
     }
 

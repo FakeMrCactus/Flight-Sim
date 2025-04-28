@@ -126,9 +126,8 @@ public class Movement : MonoBehaviour
     {
         for (var i  = 0; i < 10; i++)
         {
+            Invoke("Shoot", i / 2);
 
-            GameObject bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = bulletCreate.position;
         }
 
     } 
@@ -138,6 +137,9 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("Game Over");
     }
-
+    void Shoot()
+    {
+        Instantiate(bulletPrefab, bulletCreate.transform.position, transform.rotation);
+    }
 
 }
