@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
     public float acceleration = 1.0f;
     public float maxSpeed = 60.0f;
     public float minSpeed = 0.0f;
+    public float turnSpeed;
     Collider PlaneBody;
     public GameObject bulletPrefab;
     public Transform bulletCreate;
@@ -59,15 +60,17 @@ public class Movement : MonoBehaviour
             rotationSpeed = -MathF.Abs(rotationSpeed);
             transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
         }
+
+        //Kode for at "yaw", altså dreje til venstre og højre uden at rulle flyet
         if (Input.GetKey(KeyCode.Q))
         {
-            rotationSpeed = -MathF.Abs(rotationSpeed);
-            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+            rotationSpeed = +MathF.Abs(rotationSpeed);
+            transform.Rotate(0, -turnSpeed * Time.deltaTime, 0);
         }
         if (Input.GetKey(KeyCode.E))
         {
             rotationSpeed = +MathF.Abs(rotationSpeed);
-            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+            transform.Rotate(0, turnSpeed * Time.deltaTime, 0);
         }
  
         //Speed controller, including max and min speed to avoid flying infinitely fast or at negative speed

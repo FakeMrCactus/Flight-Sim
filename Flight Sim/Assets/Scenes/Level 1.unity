@@ -1072,6 +1072,7 @@ MonoBehaviour:
   acceleration: 3
   maxSpeed: 60
   minSpeed: 0
+  turnSpeed: 20
   bulletPrefab: {fileID: 146295095844138, guid: 740ff125da30fa64b9180fb022c8ce1b,
     type: 3}
   bulletCreate: {fileID: 1694844968}
@@ -1109,6 +1110,7 @@ GameObject:
   - component: {fileID: 904286765}
   - component: {fileID: 904286760}
   - component: {fileID: 904286759}
+  - component: {fileID: 904286766}
   m_Layer: 0
   m_Name: Third Person Aim Camera
   m_TagString: Untagged
@@ -1226,6 +1228,14 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 0, z: -7}
+--- !u!81 &904286766
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904286758}
+  m_Enabled: 1
 --- !u!1 &1024685933
 GameObject:
   m_ObjectHideFlags: 0
