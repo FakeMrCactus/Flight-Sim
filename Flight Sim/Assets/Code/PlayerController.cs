@@ -11,22 +11,22 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
+  
     public float rotationSpeed;
-    [SerializeField]
-    private float curSpeed = 10.0f;
-    [SerializeField]
-    private float curHealth;
+    public float curSpeed = 10.0f;
+    public float curHealth;
     public float acceleration = 1.0f;
     public float maxSpeed = 60.0f;
     public float minSpeed = 0.0f;
     public float turnSpeed;
     Collider PlaneBody;
     public float bulletCD;
+    public float bulletTime;
     public GameObject bulletPrefab;
     public Transform bulletCreate;
     public GameObject missilesprefab;
     public Transform missilesCreate;
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -90,12 +90,17 @@ public class PlayerController : MonoBehaviour
             if (curSpeed < minSpeed)
                 curSpeed = minSpeed;
         }
-        //keys for de forskellige måde at angribe
+        //code for at få skud til at skyde
+        bulletTime += Time.deltaTime;
         if (Input.GetMouseButton(0))
         {
             //GunsGunsGuns();
-            Shoot();
-
+           
+            if (bulletTime > bulletCD)
+            {
+                Shoot();
+                bulletTime = 0;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -125,11 +130,6 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag == "ENYBullet")
         {
             curHealth = curHealth - 20f;
-        }
-
-        if (col.gameObject.tag == "Bullet")
-        {
-            Physics.IgnoreCollision(PlaneBody,GetComponent<Collider>());
         }
     }
 

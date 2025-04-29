@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Missiles : MonoBehaviour
@@ -14,6 +15,7 @@ public class Missiles : MonoBehaviour
 
             //the missile knows where it is because it knows where it isnt
         rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -22,5 +24,11 @@ public class Missiles : MonoBehaviour
         transform.LookAt(target.transform);
 
         rb.AddForce(transform.forward);
+    }
+
+
+    void OnCollisionEnter(Collision col)
+    {
+        Destroy(this.gameObject);
     }
 }
