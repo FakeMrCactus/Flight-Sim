@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
-public class Movement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     public float rotationSpeed;
@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     public float minSpeed = 0.0f;
     public float turnSpeed;
     Collider PlaneBody;
+    public float bulletCD;
     public GameObject bulletPrefab;
     public Transform bulletCreate;
     public GameObject missilesprefab;
@@ -90,10 +91,11 @@ public class Movement : MonoBehaviour
                 curSpeed = minSpeed;
         }
         //keys for de forskellige måde at angribe
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetMouseButton(0))
         {
             //GunsGunsGuns();
             Shoot();
+
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
