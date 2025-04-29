@@ -90,9 +90,10 @@ public class Movement : MonoBehaviour
                 curSpeed = minSpeed;
         }
         //keys for de forskellige måde at angribe
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            GunsGunsGuns();
+            //GunsGunsGuns();
+            Shoot();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
