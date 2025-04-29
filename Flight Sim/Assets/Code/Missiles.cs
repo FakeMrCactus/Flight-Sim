@@ -10,7 +10,7 @@ public class Missiles : MonoBehaviour
     void Start()
     {
 
-        target = GameObject.Find("target");
+        target = GameObject.Find("TGT");
 
             //the missile knows where it is because it knows where it isnt
         rb = GetComponent<Rigidbody>();
