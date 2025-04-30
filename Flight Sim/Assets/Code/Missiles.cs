@@ -40,12 +40,28 @@ public class Missiles : MonoBehaviour
         transform.LookAt(targets[0].transform);
 
         rb.AddForce(transform.forward);
+<<<<<<< Updated upstream
        StartCoroutine(selfDestroy());
+=======
+        StartCoroutine(selfDestroy());
+>>>>>>> Stashed changes
     }
 
     IEnumerator selfDestroy()
     {
+<<<<<<< Updated upstream
         yield return new WaitForSeconds(10);
         Destroy(gameObject);
     }
+=======
+        yield return new WaitForSeconds(15);
+        Destroy(gameObject);
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Destroy(this.gameObject);
+    }
+   
+>>>>>>> Stashed changes
 }

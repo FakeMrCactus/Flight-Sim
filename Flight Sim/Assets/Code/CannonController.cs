@@ -32,7 +32,7 @@ public class CannonController : MonoBehaviour
         bulletTime += Time.deltaTime;
             if (bulletTime > bulletCD)
             {
-               // EvilShoot();
+                EvilShoot();
                 bulletTime = 0;
             }
 
