@@ -40,18 +40,12 @@ public class Missiles : MonoBehaviour
         transform.LookAt(targets[0].transform);
 
         rb.AddForce(transform.forward);
-       // StartCoroutine(selfDestroy());
+       StartCoroutine(selfDestroy());
     }
 
     IEnumerator selfDestroy()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(10);
         Destroy(gameObject);
     }
-
-   /* public void OnCollisionEnter(Collision collision)
-    {
-        Destroy(this.gameObject);
-    }
-   */
 }
