@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
             rotationSpeed = -MathF.Abs(rotationSpeed);
             transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0);
 
-        }
+        }   
 
         if (Input.GetKey(KeyCode.W)) 
         {

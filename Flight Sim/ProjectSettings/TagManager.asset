@@ -9,6 +9,7 @@ TagManager:
   - Friend
   - Bullet
   - ENYBullet
+  - Missile
   layers:
   - Default
   - TransparentFX

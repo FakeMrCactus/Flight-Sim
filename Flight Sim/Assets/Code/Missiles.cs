@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Missiles : MonoBehaviour
@@ -5,6 +7,8 @@ public class Missiles : MonoBehaviour
     public GameObject target;
 
     private Rigidbody rb;
+
+    public float rotationSpeed; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,5 +26,17 @@ public class Missiles : MonoBehaviour
         transform.LookAt(target.transform);
 
         rb.AddForce(transform.forward);
+        StartCoroutine(selfDestroy());
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        Destroy(gameObject);
+    }
+
+    IEnumerator selfDestroy()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 }
