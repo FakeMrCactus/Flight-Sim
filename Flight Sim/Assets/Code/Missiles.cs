@@ -30,11 +30,6 @@ public class Missiles : MonoBehaviour
         StartCoroutine(selfDestroy());
     }
 
-    void OnCollisionEnter(Collision col)
-    {
-        Destroy(gameObject);
-    }
-
     IEnumerator selfDestroy()
     {
         yield return new WaitForSeconds(3);
