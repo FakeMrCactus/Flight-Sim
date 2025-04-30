@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2186422006836914036}
   - component: {fileID: 7260754275342528016}
   - component: {fileID: -2409729298151365965}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ENYBullet
   m_TagString: ENYBullet
   m_Icon: {fileID: 0}

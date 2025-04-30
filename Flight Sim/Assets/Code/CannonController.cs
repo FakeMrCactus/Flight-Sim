@@ -6,6 +6,10 @@ public class CannonController : MonoBehaviour
     public GameObject target;
     public float curHealth;
     public GameObject fullModel;
+    public float bulletCD;
+    public float bulletTime;
+    public GameObject bulletPrefab;
+    public Transform bulletCreate;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +28,19 @@ public class CannonController : MonoBehaviour
             Destroy(fullModel);
         }
 
+        //code for at få skud til at skyde
+        bulletTime += Time.deltaTime;
+            if (bulletTime > bulletCD)
+            {
+               // EvilShoot();
+                bulletTime = 0;
+            }
+
+    }
+
+    void EvilShoot()
+    {
+            Instantiate(bulletPrefab, bulletCreate.transform.position, transform.rotation);
     }
 
     void OnCollisionEnter(Collision col)

@@ -803,7 +803,7 @@ MonoBehaviour:
   rotationSpeed: 100
   curSpeed: 10
   curHealth: 0
-  acceleration: 3
+  acceleration: 5
   maxSpeed: 60
   minSpeed: 0
   turnSpeed: 20

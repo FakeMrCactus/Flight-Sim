@@ -4,30 +4,43 @@ using UnityEngine;
 
 public class Missiles : MonoBehaviour
 {
-    public GameObject target;
+    public GameObject[] targets;
 
     private Rigidbody rb;
 
-  
+    public Vector3 target = new Vector3(0, 100, 0);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
-        target = GameObject.Find("TGT");
+        targets = GameObject.FindGameObjectsWithTag("Enemy");
 
             //the missile knows where it is because it knows where it isnt
         rb = GetComponent<Rigidbody>();
+
+        for (int i = 0; i < targets.Length; i++)
+        {
+            for (int j = i; j < targets.Length; j++)
+            {
+                if (Vector3.Distance(transform.position, targets[i].transform.position) > Vector3.Distance(transform.position, targets[j].transform.position))
+                {
+                    GameObject tempVal = targets[i];
+                    targets[i] = targets[j];
+                    targets[j] = tempVal;
+                }
+            }
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target.transform);
+        transform.LookAt(targets[0].transform);
 
         rb.AddForce(transform.forward);
-        StartCoroutine(selfDestroy());
+       // StartCoroutine(selfDestroy());
     }
 
     IEnumerator selfDestroy()
@@ -36,6 +49,9 @@ public class Missiles : MonoBehaviour
         Destroy(gameObject);
     }
 
-
-  
+   /* public void OnCollisionEnter(Collision collision)
+    {
+        Destroy(this.gameObject);
+    }
+   */
 }
