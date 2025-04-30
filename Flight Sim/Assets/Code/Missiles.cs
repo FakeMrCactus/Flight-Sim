@@ -8,7 +8,7 @@ public class Missiles : MonoBehaviour
 
     private Rigidbody rb;
 
-    public float rotationSpeed; 
+  
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,8 +42,5 @@ public class Missiles : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision col)
-    {
-        Destroy(this.gameObject);
-    }
+  
 }
