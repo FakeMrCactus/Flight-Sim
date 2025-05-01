@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -124,12 +125,15 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "Ground")
         {
-            curHealth = curHealth - 100f;
+            curHealth -= 100f;
         }
+    }
 
-        if (col.gameObject.tag == "ENYBullet")
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "ENYBullet")
         {
-            curHealth = curHealth - 20f;
+            curHealth -= 20f;
         }
     }
 
